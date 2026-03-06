@@ -1,0 +1,145 @@
+{
+  "root": {
+    "label": "Bài 1: Giới thiệu về Chuyển đổi số (Digital Transformation)",
+    "children": [
+      {
+        "label": "Chuyển đổi số là gì?",
+        "children": [
+          {
+            "label": "Định nghĩa",
+            "children": [
+              {
+                "label": "Thay đổi tổng thể, toàn diện cá nhân, tổ chức"
+              },
+              {
+                "label": "Dựa trên các công nghệ số"
+              }
+            ]
+          },
+          {
+            "label": "Bản chất",
+            "children": [
+              {
+                "label": "Không chỉ là số hóa hay tin học hóa"
+              },
+              {
+                "label": "Thay đổi căn bản mô hình, văn hóa, trải nghiệm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Phân biệt Số hóa, Tin học hóa và Chuyển đổi số",
+        "children": [
+          {
+            "label": "Số hóa (Digitization)",
+            "children": [
+              {
+                "label": "Chuyển thông tin từ dạng vật lý sang kỹ thuật số"
+              },
+              {
+                "label": "Ví dụ: quét tài liệu giấy thành file PDF"
+              }
+            ]
+          },
+          {
+            "label": "Tin học hóa (Digitalization)",
+            "children": [
+              {
+                "label": "Sử dụng công nghệ số để cải thiện quy trình hiện có"
+              },
+              {
+                "label": "Ví dụ: dùng phần mềm quản lý thay vì sổ sách"
+              }
+            ]
+          },
+          {
+            "label": "Chuyển đổi số (Digital Transformation)",
+            "children": [
+              {
+                "label": "Thay đổi toàn diện mô hình kinh doanh và tổ chức"
+              },
+              {
+                "label": "Ví dụ: xây dựng nền tảng thương mại điện tử"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Tại sao Chuyển đổi số lại cần thiết?",
+        "children": [
+          {
+            "label": "Nâng cao hiệu quả & năng suất",
+            "children": [
+              {
+                "label": "Nâng cao hiệu quả hoạt động"
+              },
+              {
+                "label": "Nâng cao năng suất lao động"
+              }
+            ]
+          },
+          {
+            "label": "Cải thiện trải nghiệm & cạnh tranh",
+            "children": [
+              {
+                "label": "Tạo ra trải nghiệm tốt hơn cho khách hàng/người dùng"
+              },
+              {
+                "label": "Tăng khả năng cạnh tranh trong bối cảnh CMCN 4.0"
+              }
+            ]
+          },
+          {
+            "label": "Thích ứng & tối ưu chi phí",
+            "children": [
+              {
+                "label": "Thích ứng với sự thay đổi nhanh chóng của thị trường"
+              },
+              {
+                "label": "Giảm chi phí vận hành và tối ưu hóa quy trình"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Các công nghệ nền tảng của Chuyển đổi số",
+        "children": [
+          {
+            "label": "Trí tuệ nhân tạo (AI)",
+            "children": [
+              {
+                "label": "Máy tính có khả năng học hỏi và ra quyết định"
+              }
+            ]
+          },
+          {
+            "label": "Hạ tầng & Kết nối",
+            "children": [
+              {
+                "label": "Internet vạn vật (IoT): Kết nối thiết bị vật lý qua mạng internet"
+              },
+              {
+                "label": "Điện toán đám mây (Cloud Computing): Cung cấp tài nguyên CNTT qua internet"
+              }
+            ]
+          },
+          {
+            "label": "Dữ liệu & Bảo mật",
+            "children": [
+              {
+                "label": "Dữ liệu lớn (Big Data): Thu thập, lưu trữ và phân tích lượng dữ liệu khổng lồ"
+              },
+              {
+                "label": "Blockchain: Công nghệ sổ cái phân tán, đảm bảo tính minh bạch và bảo mật"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -136,5 +136,47 @@
     "path": "/home/hieu/Tài liệu/lms-master/server/uploads/1/b9/1772781502487_BÃ_i_9.pdf",
     "downloadUrl": "/uploads/1/b9/1772781502487_BÃ_i_9.pdf",
     "uploadedAt": "2026-03-06T07:18:22.492Z"
+  },
+  {
+    "id": "1772932697135_2kgz6x",
+    "originalName": "BÃ i 1-BÃ i giáº£ng.pdf",
+    "storedName": "1772932697116_BÃ_i_1-BÃ_i_giá__ng.pdf",
+    "size": 2577105,
+    "mimetype": "application/pdf",
+    "courseId": "2",
+    "courseName": "Học máy",
+    "lessonId": "b1",
+    "lessonName": "Bài 1: Giới thiệu Học máy",
+    "path": "C:\\Users\\HieuPC\\Documents\\GitHub\\lms-master\\server\\uploads\\2\\b1\\1772932697116_BÃ_i_1-BÃ_i_giá__ng.pdf",
+    "downloadUrl": "/uploads/2/b1/1772932697116_BÃ_i_1-BÃ_i_giá__ng.pdf",
+    "uploadedAt": "2026-03-08T01:18:17.135Z"
+  },
+  {
+    "id": "1772934193884_bz65ye",
+    "originalName": "BÃ i 1-BÃ i giáº£ng.pdf",
+    "storedName": "1772934193869_Bài_1-Bài_giảng.pdf",
+    "size": 2577105,
+    "mimetype": "application/pdf",
+    "courseId": "2",
+    "courseName": "Học máy",
+    "lessonId": "b1",
+    "lessonName": "Bài 1: Giới thiệu Học máy",
+    "path": "C:\\Users\\HieuPC\\Documents\\GitHub\\lms-master\\server\\uploads\\2\\b1\\1772934193869_Bài_1-Bài_giảng.pdf",
+    "downloadUrl": "/uploads/2/b1/1772934193869_Bài_1-Bài_giảng.pdf",
+    "uploadedAt": "2026-03-08T01:43:13.884Z"
+  },
+  {
+    "id": "1772934269037_3xxvwe",
+    "originalName": "BÃ i 1.pdf",
+    "storedName": "1772934269031_Bài_1.pdf",
+    "size": 906433,
+    "mimetype": "application/pdf",
+    "courseId": "2",
+    "courseName": "Học máy",
+    "lessonId": "b1",
+    "lessonName": "Bài 1: Giới thiệu Học máy",
+    "path": "C:\\Users\\HieuPC\\Documents\\GitHub\\lms-master\\server\\uploads\\2\\b1\\1772934269031_Bài_1.pdf",
+    "downloadUrl": "/uploads/2/b1/1772934269031_Bài_1.pdf",
+    "uploadedAt": "2026-03-08T01:44:29.037Z"
   }
 ]

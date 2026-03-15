@@ -314,7 +314,7 @@ export default function UploadPage() {
                             <button className="upload-secondary-btn" onClick={() => { setStep('upload'); setFiles([]) }}>
                                 Tải thêm file
                             </button>
-                            <button className="upload-submit-btn" onClick={() => window.location.href = '/dashboard/classes/learning/2'}>
+                            <button className="upload-submit-btn" onClick={() => window.location.href = `/dashboard/classes/learning/${selectedCourseId}`}>
                                 Xem bài giảng ngay
                             </button>
                         </div>

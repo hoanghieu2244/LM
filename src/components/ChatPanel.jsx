@@ -1,6 +1,10 @@
 import { useContext, useState, useRef, useEffect } from 'react'
 import { AppContext } from '../App'
 import { HiXMark, HiPaperAirplane, HiSparkles } from 'react-icons/hi2'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import mermaid from 'mermaid'
+import ReactECharts from 'echarts-for-react'
 
 const INITIAL_MESSAGES = [
     { role: 'bot', text: 'Xin chào! 👋 Mình là Trợ lý AI của bạn (powered by Gemini 2.5). Mình có thể giúp bạn:\n\n• 📖 Giải thích nội dung bài giảng\n• 📝 Tạo quiz nhanh\n• 💡 Cho ví dụ thực tế\n\nBạn cần hỗ trợ gì nào? 😊' },
@@ -16,7 +20,13 @@ export default function ChatPanel() {
     const messagesEndRef = useRef(null)
 
     useEffect(() => {
+        mermaid.initialize({ startOnLoad: false, theme: 'default' })
+    }, [])
+
+    useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+        // Tự động render lại các biểu đồ mermaid mới
+        mermaid.contentLoaded()
     }, [messages])
 
     const callGeminiChat = async (userText) => {
@@ -88,9 +98,44 @@ export default function ChatPanel() {
             <div className="chat-messages">
                 {messages.map((msg, idx) => (
                     <div key={idx} className={`chat-message ${msg.role}`}>
-                        {msg.text.split('\n').map((line, i) => (
-                            <span key={i}>{line}{i < msg.text.split('\n').length - 1 && <br />}</span>
-                        ))}
+                        {msg.role === 'user' ? (
+                            msg.text.split('\n').map((line, i) => (
+                                <span key={i}>{line}{i < msg.text.split('\n').length - 1 && <br />}</span>
+                            ))
+                        ) : (
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                components={{
+                                    code({ node, inline, className, children, ...props }) {
+                                        const match = /language-(\w+)/.exec(className || '')
+                                        const codeContent = String(children).replace(/\n$/, '')
+
+                                        if (!inline && match && match[1] === 'mermaid') {
+                                            return (
+                                                <div className="mermaid-wrapper" style={{ background: 'white', padding: 10, borderRadius: 8, margin: '10px 0', overflowX: 'auto', border: '1px solid #eee' }}>
+                                                    <div className="mermaid">{codeContent}</div>
+                                                </div>
+                                            )
+                                        }
+                                        if (!inline && match && match[1] === 'echarts') {
+                                            try {
+                                                const options = JSON.parse(codeContent)
+                                                return (
+                                                    <div className="echarts-wrapper" style={{ background: 'white', padding: 10, borderRadius: 8, margin: '10px 0', border: '1px solid #eee' }}>
+                                                        <ReactECharts option={options} style={{ height: '300px', width: '100%' }} />
+                                                    </div>
+                                                )
+                                            } catch (e) {
+                                                return <div className="error-msg" style={{ color: 'red' }}>⚠️ Lỗi render biểu đồ ECharts: {e.message}</div>
+                                            }
+                                        }
+                                        return <code className={className} {...props}>{children}</code>
+                                    }
+                                }}
+                            >
+                                {msg.text}
+                            </ReactMarkdown>
+                        )}
                     </div>
                 ))}
                 {isTyping && (

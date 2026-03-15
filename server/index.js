@@ -7,6 +7,7 @@ import dotenv from 'dotenv'
 import { GoogleGenAI } from '@google/genai'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { initVectorDB, processDocument, searchKnowledgeBase, getDocumentTextByLesson } from './ragService.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 dotenv.config({ path: join(__dirname, '.env') })
@@ -15,6 +16,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/uploads', express.static(join(__dirname, 'uploads')))
+
+// Khởi tạo RAG Vector DB (Hỗ trợ MongoDB Atlas hoặc Local JSON)
+await initVectorDB()
 
 // ============================================
 // FILE UPLOAD SETUP (Multer)
@@ -42,7 +46,10 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const timestamp = Date.now()
-        const safeName = file.originalname.replace(/[^a-zA-Z0-9._\-\u00C0-\u024F\u1E00-\u1EFF]/g, '_')
+        // Multer decodes originalname as latin1 in some express versions, we decode it back to utf8
+        const utf8Name = Buffer.from(file.originalname, 'latin1').toString('utf8')
+        // Safe filename: allow basic ascii + basic unicode word chars
+        const safeName = utf8Name.replace(/[^a-zA-Z0-9.\-_\u00C0-\u024F\u1E00-\u1EFF]/g, '_')
         cb(null, `${timestamp}_${safeName}`)
     }
 })
@@ -254,9 +261,24 @@ app.post('/api/upload', (req, res) => {
 
         console.log(`📁 Uploaded ${req.files.length} file(s) to course ${courseId}/${lessonId}`)
 
+        // Xóa cache cũ để AI tạo lại text/mindmap dựa trên file thật này
+        clearCache(cid, lid)
+
+        // Nạp file upload vào RAG Vector DB
+        for (const f of req.files) {
+            try {
+                // Background process: extract & embed text, bind to courseId and lessonId
+                processDocument(f.path, f.originalname, f.mimetype, cid, lid).then(chunks => {
+                    console.log(`✅ File ${f.originalname} đã được Vector hóa thành công (${chunks} chunks).`)
+                }).catch(err => {
+                    console.error(`❌ Lỗi AI xử lý file ${f.originalname}:`, err.message)
+                })
+            } catch (e) { }
+        }
+
         res.json({
             success: true,
-            message: `Đã upload ${req.files.length} file thành công`,
+            message: `Đã upload ${req.files.length} file thành công. AI đang đọc tài liệu của bạn...`,
             files: newEntries,
         })
     })
@@ -302,13 +324,6 @@ app.post('/api/chat', async (req, res) => {
             return res.status(500).json({ error: 'GEMINI_API_KEY is not configured' })
         }
 
-        const systemMessage = `Bạn là một trợ lý AI học tập (Tutor Chat Agent) thân thiện và thông minh của hệ thống LMS ICTU.
-Nhiệm vụ: Giải đáp thắc mắc của sinh viên về bài giảng, giải thích khái niệm khó hiểu, cho ví dụ minh họa trực quan.
-Phong cách: Sư phạm, thân thiện, dùng emoji hợp lý, trả lời ngắn gọn súc tích dễ hiểu.
-Markdown: Sử dụng markdown để format câu trả lời (in đậm, danh sách...).
-
-Context môn học hiện tại: ${context || 'Không có dữ liệu ngữ cảnh cụ thể'}`
-
         // Format history for Gemini SDK
         const formattedHistory = messages.map(m => ({
             role: m.role === 'user' ? 'user' : 'model',
@@ -323,6 +338,53 @@ Context môn học hiện tại: ${context || 'Không có dữ liệu ngữ cả
             latestMessage = lastMsg.parts[0].text
             history = formattedHistory
         }
+
+        // --- ROUTE-BASED RAG: Phân loại ý định (Intent Classification) ---
+        const routePrompt = `Phân loại ý định của câu nói sau đây thành 1 trong 2 loại:
+1. "SEARCH": Câu hỏi về kiến thức, học tập, cần tra cứu tài liệu bài giảng. (Ví dụ: Định nghĩa X là gì? Vì sao Y lại thế? Giải thích bài 2)
+2. "CHAT": Câu giao tiếp thông thường, chào hỏi, cảm ơn, tán gẫu, hoặc yêu cầu chung chung vẽ biểu đồ. (Ví dụ: Chào bạn, bạn tên gì, vẽ sơ đồ tư duy)
+
+Trả về CHỈ một từ "SEARCH" hoặc "CHAT". KHÔNG giải thích thêm.
+Câu nói: "${latestMessage}"`
+
+        let intent = 'SEARCH' // Default fallback
+        try {
+            const routeRes = await ai.models.generateContent({
+                model: 'gemini-2.5-flash',
+                contents: routePrompt,
+                config: { temperature: 0.1 }
+            })
+            const intentText = routeRes.text?.trim().toUpperCase() || ''
+            if (intentText.includes('CHAT')) intent = 'CHAT'
+        } catch(e) { console.error('Lỗi Router RAG:', e.message) }
+
+        // Tìm kiếm tài liệu RAG tương ứng với tin nhắn mới nhất
+        let ragContext = ''
+        if (intent === 'SEARCH') {
+            console.log(`🔍 [Intent=SEARCH] Tìm kiếm RAG cho câu hỏi: "${latestMessage}"`)
+            const relevantDocs = await searchKnowledgeBase(latestMessage, 3)
+            if (relevantDocs.length > 0) {
+                console.log(`✅ Tìm thấy ${relevantDocs.length} đoạn kiến thức phù hợp!`)
+                ragContext = '\n\nKIẾN THỨC BỔ SUNG TỪ TÀI LIỆU ĐÃ UPLOAD (KNOWLEDGE BASE):\n' +
+                    relevantDocs.map((doc, i) => `[Tài liệu ${i + 1} - ${doc.filename} (Trang ${doc.page})]: ${doc.text}`).join('\n\n')
+            } else {
+                console.log('⚠️ Không tìm thấy tài liệu liên quan trong DB.')
+            }
+        } else {
+            console.log(`💬 [Intent=CHAT] Bỏ qua RAG (Tiết kiệm Token & DB) cho: "${latestMessage}"`)
+        }
+
+        const systemMessage = `Bạn là một trợ lý AI học tập (Tutor Chat Agent) thân thiện và thông minh của hệ thống LMS ICTU.
+Nhiệm vụ: Giải đáp thắc mắc của sinh viên về bài giảng, giải thích khái niệm khó hiểu.
+Phong cách: Sư phạm, thân thiện, dùng emoji hợp lý, trả lời ngắn gọn súc tích dễ hiểu.
+Quy định Nghiêm ngặt: Cố gắng ƯU TIÊN TRẢ LỜI dựa trên [Kiến thức bổ sung từ tài liệu] phía dưới nếu có, và bắt buộc phải TRÍCH DẪN NGUỒN (VD: "Theo tài liệu Bài_giảng.pdf (Trang 5)..."). Nếu không có ở đó, hãy trả lời bằng kiến thức thông thường của bạn.
+
+Kỹ năng vẽ Biểu đồ:
+- Khi người dùng muốn xem Biểu đồ Usecase, Flowchart, Mindmap, Sequence... HÃY SỬ DỤNG mã Mermaid bằng cách viết trong code block markdown \`\`\`mermaid.
+- Khi người dùng muốn xem Biểu đồ Dữ liệu (Tròn, Cột, Line, Radar...), HÃY SỬ DỤNG ECharts bằng cách viết cấu hình JSON đầy đủ trong code block markdown \`\`\`echarts. Lưu ý file JSON của Echarts phải đúng chuẩn format của option object trong thư viện echarts.
+
+Context môn học hiện tại: ${context || 'Không có dữ liệu ngữ cảnh cụ thể'}
+${ragContext}`
 
         const chat = ai.chats.create({
             model: "gemini-2.5-flash",
@@ -422,6 +484,11 @@ function writeCache(type, courseId, lessonId, data) {
     fs.writeFileSync(getCachePath(type, courseId, lessonId), JSON.stringify(data, null, 2))
 }
 
+function clearCache(courseId, lessonId) {
+    try { fs.unlinkSync(getCachePath('immersive', courseId, lessonId)) } catch (e) { }
+    try { fs.unlinkSync(getCachePath('mindmap', courseId, lessonId)) } catch (e) { }
+}
+
 // ============================================
 // API: Immersive Text (AI diễn giải nội dung)
 // ============================================
@@ -451,37 +518,43 @@ app.post('/api/ai/immersive-text', async (req, res) => {
             return content
         }).join('\n')
 
-        const prompt = `Bạn là AI Tutor chuyên diễn giải bài giảng cho sinh viên đại học Việt Nam.
+        // Tự động kiểm tra xem bài học này có tài liệu upload trong hệ thống chưa (Đã nâng cấp Async MongoDB)
+        const realDocumentText = await getDocumentTextByLesson(courseId, lessonId)
 
-NHIỆM VỤ: Viết lại nội dung bài giảng dưới đây theo cách DỄ HIỂU NHẤT, thân thiện, gần gũi.
+        const sourceDataNote = realDocumentText
+            ? `BÀI GIẢNG GỐC TỪ TÀI LIỆU CỦA GIÁO VIÊN NẠP LÊN HỆ THỐNG:\nTiêu đề: ${title}\n================\n${realDocumentText}\n================\nHãy bám sát nội dung chi tiết phía trên để tạo bài học Immersive Text.`
+            : `BÀI GIẢNG GỐC:\nTiêu đề: ${title}\n${sectionsText}`
+
+        const prompt = `Bạn là AI chuyên gia sư phạm.
+NHIỆM VỤ CỰC KỲ QUAN TRỌNG: Hãy ĐOẠN ĐỌC KỸ LƯỠNG BÀI GIẢNG GỐC được cung cấp dưới đây. Nhiệm vụ của bạn là bóc tách KIẾN THỨC CỐT LÕI từ tài liệu đó và chuyển đổi nó thành một đoạn văn sinh động, dễ hiểu (Immersive Text) cho sinh viên tự học. 
+
+TUYỆT ĐỐI KHÔNG SUY DIỄN THÊM KIẾN THỨC BÊN NGOÀI nếu tài liệu không đề cập.
 
 QUY TẮC:
-- Giữ nguyên cấu trúc các section (mỗi section là 1 phần)
-- Dùng ngôn ngữ đơn giản, ví dụ thực tế gần gũi với sinh viên Việt Nam
-- Highlight các khái niệm quan trọng bằng **bold**
-- Thêm emoji để sinh động
-- Cuối MỖI section, tạo 1 câu hỏi trắc nghiệm (4 lựa chọn) liên quan nội dung vừa giải thích
+- Dùng ngôn ngữ thân thiện, dễ hiểu, có emoji.
+- Giải thích các thuật ngữ khó DỰA TRÊN NGỮ CẢNH CỦA TÀI LIỆU.
+- Cho ví dụ thực tế liên quan trực tiếp đến nội dung bài.
+- Xây dựng từ 3 đến 5 sections (phần) liên tiếp để cover hết ý chính của tài liệu.
+- Mỗi phần tạo một câu hỏi trắc nghiệm (quiz) để kiểm tra đúng nội dung phần đó.
 
 ĐỊNH DẠNG TRẢ VỀ: JSON object với cấu trúc:
 {
-  "title": "Tiêu đề bài",
+  "title": "Tiêu đề bài học dựa theo tài liệu",
   "sections": [
     {
-      "heading": "Tên section",
-      "content": "Nội dung đã diễn giải (hỗ trợ markdown cơ bản: **bold**, - list)",
+      "heading": "Tên section (Luận điểm chính)",
+      "content": "Nội dung CHUYÊN SÂU đã diễn giải từ tài liệu (hỗ trợ markdown cơ bản: **bold**, - list). Đảm bảo nội dung đủ dài và chi tiết.",
       "quiz": {
         "question": "Câu hỏi?",
         "options": ["A", "B", "C", "D"],
         "correctIdx": 0,
-        "explanation": "Giải thích"
+        "explanation": "Giải thích chi tiết"
       }
     }
   ]
 }
 
-BÀI GIẢNG GỐC:
-Tiêu đề: ${title}
-${sectionsText}`
+${sourceDataNote}`
 
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
@@ -540,28 +613,38 @@ app.post('/api/ai/mindmap', async (req, res) => {
             return content
         }).join('\n')
 
+        // Tự động kiểm tra xem bài học này có tài liệu upload trong hệ thống chưa (Đã nâng cấp Async MongoDB)
+        const realDocumentText = await getDocumentTextByLesson(courseId, lessonId)
+
+        const sourceDataNote = realDocumentText
+            ? `BÀI GIẢNG GỐC TỪ TÀI LIỆU CỦA GIÁO VIÊN NẠP LÊN HỆ THỐNG:\nTiêu đề: ${title}\n================\n${realDocumentText}\n================\nHãy bám sát nội dung chi tiết phía trên để tạo các nhánh Mindmap.`
+            : `BÀI GIẢNG GỐC:\nTiêu đề: ${title}\n${sectionsText}`
+
         const prompt = `Bạn là AI chuyên tạo sơ đồ tư duy (mind map).
 
-NHIỆM VỤ: Phân tích bài giảng dưới đây và tạo cấu trúc mindmap.
+NHIỆM VỤ CỰC KỲ QUAN TRỌNG: Đọc thật kỹ BÀI GIẢNG GỐC bên dưới. 
+Bạn phải bóc tách sâu các Khái niệm, Phân loại, Ưu/Nhược điểm, và Quy trình có trong tài liệu để vẽ lên một sơ đồ tư duy MẠCH LẠC, ĐẦY ĐỦ NHẤT CÓ THỂ. KHÔNG BỎ SÓT Ý CHÍNH NÀO TRONG TÀI LIỆU.
 
 QUY TẮC:
-- Node gốc là tên bài giảng
-- Các nhánh chính là các section/chủ đề chính
-- Mỗi nhánh có 2-4 nhánh con là các khái niệm/ý chính
-- Mỗi nhánh con có thể có 1-2 chi tiết
+- Node gốc (root) là Tên bài giảng/Chủ đề quy tụ.
+- Các nhánh chính (children cấp 1) là các section/chủ đề lớn trong tài liệu.
+- Mỗi nhánh chính PHẢI CÓ 2-5 nhánh con (children cấp 2) giải thích các khái niệm/ý chính.
+- Đi sâu thêm vào các nhánh chi tiết (children cấp 3, 4) nếu tài liệu có đề cập đến định nghĩa cụ thể hoặc ví dụ.
+- Label phải ngắn gọn, súc tích (1-5 từ).
 
 ĐỊNH DẠNG TRẢ VỀ: JSON object:
 {
   "root": {
-    "label": "Tên bài",
+    "label": "Tên bài/Chủ đề chính",
     "children": [
       {
-        "label": "Chủ đề chính",
+        "label": "Chủ đề số 1",
         "children": [
           {
-            "label": "Khái niệm con",
+            "label": "Khái niệm con A",
             "children": [
-              { "label": "Chi tiết" }
+              { "label": "Đặc điểm 1" },
+              { "label": "Đặc điểm 2" }
             ]
           }
         ]
@@ -570,9 +653,7 @@ QUY TẮC:
   }
 }
 
-BÀI GIẢNG:
-Tiêu đề: ${title}
-${sectionsText}`
+${sourceDataNote}`
 
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',

@@ -6,7 +6,7 @@
         "label": "Chuyển đổi số là gì?",
         "children": [
           {
-            "label": "Định nghĩa",
+            "label": "Định nghĩa chung",
             "children": [
               {
                 "label": "Thay đổi tổng thể, toàn diện cá nhân, tổ chức"
@@ -17,13 +17,13 @@
             ]
           },
           {
-            "label": "Bản chất",
+            "label": "Không chỉ là số hóa hay tin học hóa",
             "children": [
               {
-                "label": "Không chỉ là số hóa hay tin học hóa"
+                "label": "Thay đổi căn bản mô hình hoạt động"
               },
               {
-                "label": "Thay đổi căn bản mô hình, văn hóa, trải nghiệm"
+                "label": "Thay đổi văn hóa tổ chức và trải nghiệm khách hàng"
               }
             ]
           }
@@ -36,7 +36,7 @@
             "label": "Số hóa (Digitization)",
             "children": [
               {
-                "label": "Chuyển thông tin từ dạng vật lý sang kỹ thuật số"
+                "label": "Chuyển đổi thông tin từ dạng vật lý sang kỹ thuật số"
               },
               {
                 "label": "Ví dụ: quét tài liệu giấy thành file PDF"
@@ -71,7 +71,7 @@
         "label": "Tại sao Chuyển đổi số lại cần thiết?",
         "children": [
           {
-            "label": "Nâng cao hiệu quả & năng suất",
+            "label": "Nâng cao hiệu quả và năng suất",
             "children": [
               {
                 "label": "Nâng cao hiệu quả hoạt động"
@@ -82,18 +82,23 @@
             ]
           },
           {
-            "label": "Cải thiện trải nghiệm & cạnh tranh",
+            "label": "Cải thiện trải nghiệm",
             "children": [
               {
                 "label": "Tạo ra trải nghiệm tốt hơn cho khách hàng/người dùng"
-              },
-              {
-                "label": "Tăng khả năng cạnh tranh trong bối cảnh CMCN 4.0"
               }
             ]
           },
           {
-            "label": "Thích ứng & tối ưu chi phí",
+            "label": "Tăng khả năng cạnh tranh",
+            "children": [
+              {
+                "label": "Trong bối cảnh cách mạng công nghiệp 4.0"
+              }
+            ]
+          },
+          {
+            "label": "Thích ứng và tối ưu",
             "children": [
               {
                 "label": "Thích ứng với sự thay đổi nhanh chóng của thị trường"
@@ -117,24 +122,37 @@
             ]
           },
           {
-            "label": "Hạ tầng & Kết nối",
+            "label": "Internet vạn vật (IoT)",
             "children": [
               {
-                "label": "Internet vạn vật (IoT): Kết nối thiết bị vật lý qua mạng internet"
-              },
-              {
-                "label": "Điện toán đám mây (Cloud Computing): Cung cấp tài nguyên CNTT qua internet"
+                "label": "Kết nối các thiết bị vật lý qua mạng internet"
               }
             ]
           },
           {
-            "label": "Dữ liệu & Bảo mật",
+            "label": "Dữ liệu lớn (Big Data)",
             "children": [
               {
-                "label": "Dữ liệu lớn (Big Data): Thu thập, lưu trữ và phân tích lượng dữ liệu khổng lồ"
+                "label": "Thu thập, lưu trữ và phân tích lượng dữ liệu khổng lồ"
+              }
+            ]
+          },
+          {
+            "label": "Điện toán đám mây (Cloud Computing)",
+            "children": [
+              {
+                "label": "Cung cấp tài nguyên CNTT qua internet"
+              }
+            ]
+          },
+          {
+            "label": "Blockchain",
+            "children": [
+              {
+                "label": "Công nghệ sổ cái phân tán"
               },
               {
-                "label": "Blockchain: Công nghệ sổ cái phân tán, đảm bảo tính minh bạch và bảo mật"
+                "label": "Đảm bảo tính minh bạch và bảo mật"
               }
             ]
           }

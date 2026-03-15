@@ -1,0 +1,65 @@
+{
+  "title": "Bài 2: Hồi quy tuyến tính (Linear Regression)",
+  "sections": [
+    {
+      "heading": "Hồi quy tuyến tính là gì?",
+      "content": "Chào các bạn! 👋 Hôm nay chúng ta sẽ cùng nhau khám phá một \"siêu năng lực\" trong thế giới khoa học dữ liệu: **Hồi quy tuyến tính (Linear Regression)**. Nghe tên có vẻ \"khó nhằn\" nhưng thực ra nó rất thú vị và hữu ích đó!\n\nHãy tưởng tượng bạn muốn dự đoán giá một căn nhà 🏡. Giá nhà sẽ phụ thuộc vào nhiều yếu tố, đúng không? Ví dụ như diện tích (lớn hơn thì đắt hơn), số phòng ngủ, vị trí, v.v. Hồi quy tuyến tính chính là công cụ giúp chúng ta tìm ra một \"công thức\" toán học đơn giản để mô tả mối quan hệ giữa các yếu tố đó với giá nhà.\n\nNói một cách \"học thuật\" hơn chút:\n- Nó là một **phương pháp thống kê** giúp chúng ta \"mô hình hóa\" (tức là tạo ra một công thức toán học) một **mối quan hệ tuyến tính**.\n- **Mối quan hệ tuyến tính** nghĩa là khi một yếu tố thay đổi, yếu tố kia cũng thay đổi theo một tỷ lệ cố định, tạo thành một đường thẳng (hoặc mặt phẳng) nếu vẽ trên đồ thị.\n- Chúng ta có hai loại \"biến số\" quan trọng:\n    - **Biến phụ thuộc (y)**: Là cái mà chúng ta muốn dự đoán, ví dụ như **giá nhà** 💰. Nó \"phụ thuộc\" vào các yếu tố khác.\n    - **Biến độc lập (x)**: Là các yếu tố dùng để dự đoán biến phụ thuộc, ví dụ như **diện tích nhà**, **số phòng ngủ** 🛌. Chúng \"độc lập\" và ảnh hưởng đến biến y.",
+      "quiz": {
+        "question": "Hồi quy tuyến tính được dùng để làm gì?",
+        "options": [
+          "A. Phân loại đối tượng thành các nhóm khác nhau.",
+          "B. Tìm mối quan hệ tuyến tính giữa các biến số.",
+          "C. Nhận dạng hình ảnh và giọng nói.",
+          "D. Tạo ra các văn bản tự động."
+        ],
+        "correctIdx": 1,
+        "explanation": "Hồi quy tuyến tính tập trung vào việc mô hình hóa mối quan hệ tuyến tính giữa biến phụ thuộc và các biến độc lập để dự đoán hoặc giải thích."
+      }
+    },
+    {
+      "heading": "Công thức",
+      "content": "Tuyệt vời! Bây giờ chúng ta đã hiểu Hồi quy tuyến tính dùng để làm gì, hãy cùng \"mổ xẻ\" cái \"trái tim\" của nó: **Công thức toán học**! 💖\n\nCông thức \"thần thánh\" đó trông như thế này:\n**y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε**\n\nNghe có vẻ hơi nhiều ký tự Hy Lạp nhỉ? Đừng lo, chúng ta sẽ \"giải mã\" từng phần một:\n\n-   **y**: Đây chính là **biến phụ thuộc** của chúng ta (hay còn gọi là **target**). Nó là cái mà chúng ta muốn **dự đoán** hoặc **giải thích**. Ví dụ, đó là **giá nhà** 💰 mà chúng ta đang cố gắng ước tính.\n\n-   **x₁, x₂, ..., xₙ**: Đây là các **biến độc lập** (hay còn gọi là **features**). Chúng là những yếu tố mà chúng ta dùng để dự đoán y. Quay lại ví dụ nhà cửa, x₁ có thể là **diện tích nhà** 📐, x₂ là **số phòng ngủ** 🛏️, x₃ là **vị trí** (gần trường học, bệnh viện không?), v.v.\n\n-   **β₀ (beta-naught)**: Đây là **hệ số chặn (intercept)**. Bạn có thể hình dung nó như là \"giá trị cơ bản\" của y khi tất cả các x đều bằng 0. Ví dụ, nếu diện tích nhà, số phòng ngủ, v.v. đều bằng 0 (một căn nhà \"ảo\"), thì β₀ sẽ là giá khởi điểm. 🚀\n\n-   **β₁, β₂, ..., βₙ (beta-one, beta-two,...)**: Đây là các **hệ số hồi quy**. Chúng ta có thể coi chúng như \"trọng số\" hoặc \"mức độ ảnh hưởng\" của từng biến độc lập (x) lên biến phụ thuộc (y).\n    -   Ví dụ, nếu β₁ (cho diện tích nhà) là 10, điều đó có nghĩa là cứ mỗi mét vuông diện tích tăng thêm, giá nhà sẽ tăng thêm 10 đơn vị (ví dụ 10 triệu đồng), giả sử các yếu tố khác không đổi. Nó cho biết **mức độ và hướng** của mối quan hệ. Một β dương nghĩa là x tăng thì y tăng, β âm nghĩa là x tăng thì y giảm.\n\n-   **ε (epsilon)**: Đây là **sai số (error)**. Trong thế giới thực, không có mô hình nào hoàn hảo 💯. Sai số này đại diện cho những yếu tố ngẫu nhiên, những biến số chúng ta không đưa vào mô hình, hoặc những điều không thể giải thích được bằng các biến x hiện có. Nó giống như \"phần còn lại\" không dự đoán được. 🤷‍♀️\n\nTóm lại, công thức này cho chúng ta biết: **y (cái chúng ta muốn dự đoán) = một giá trị cơ bản + tổng của (mức độ ảnh hưởng của từng yếu tố * giá trị của yếu tố đó) + một chút sai số ngẫu nhiên.**",
+      "quiz": {
+        "question": "Trong công thức hồi quy tuyến tính y = β₀ + β₁x₁ + ... + ε, ký hiệu β₀ đại diện cho điều gì?",
+        "options": [
+          "A. Sai số của mô hình.",
+          "B. Biến độc lập.",
+          "C. Hệ số chặn (intercept).",
+          "D. Biến phụ thuộc."
+        ],
+        "correctIdx": 2,
+        "explanation": "β₀ (hệ số chặn) là giá trị ước tính của biến phụ thuộc y khi tất cả các biến độc lập (x) đều bằng 0. Nó là điểm mà đường hồi quy cắt trục y."
+      }
+    },
+    {
+      "heading": "Hàm mất mát (Loss Function)",
+      "content": "Vậy là chúng ta đã có công thức để dự đoán giá nhà. Nhưng làm sao để biết công thức đó có \"chuẩn\" hay không? 🤔 Chúng ta cần một \"thước đo\" để đánh giá mức độ \"sai sót\" của những dự đoán mà mô hình tạo ra. Đó chính là lúc **Hàm mất mát (Loss Function)** ra đời!\n\nHãy nghĩ Hàm mất mát như một \"điểm số thất vọng\" 😠. Khi mô hình của chúng ta dự đoán sai, điểm thất vọng này sẽ tăng lên. Mục tiêu của chúng ta là làm cho điểm thất vọng này **nhỏ nhất có thể**!\n\nTrong Hồi quy tuyến tính, một trong những Hàm mất mát phổ biến nhất là **Sai số Bình phương Trung bình (Mean Squared Error - MSE)**.\n\n**Công thức của MSE:**\n**MSE = (1/n) × Σ(yᵢ - ŷᵢ)²**\n\nĐể hiểu công thức này, chúng ta cùng \"mổ xẻ\" nhé:\n-   **yᵢ**: Là **giá trị thực tế** của biến phụ thuộc (ví dụ: giá nhà thực tế của căn nhà thứ 'i').\n-   **ŷᵢ (y-hat)**: Là **giá trị dự đoán** của biến phụ thuộc (ví dụ: giá nhà mà mô hình của chúng ta **dự đoán** cho căn nhà thứ 'i').\n-   **(yᵢ - ŷᵢ)**: Đây chính là **sai số** hay **phần chênh lệch** giữa giá trị thực tế và giá trị dự đoán của một điểm dữ liệu. Nếu nó là dương, mô hình dự đoán thấp hơn thực tế; nếu là âm, mô hình dự đoán cao hơn thực tế.\n-   **(...)²**: Chúng ta **bình phương** sai số này. Tại sao lại bình phương?\n    1.  Để biến các giá trị âm thành dương (vì chúng ta chỉ quan tâm đến độ lớn của sai số, không quan tâm nó dự đoán cao hơn hay thấp hơn).\n    2.  Để \"trừng phạt\" 😈 những sai số lớn nhiều hơn. Ví dụ, sai số 2 khi bình phương là 4, nhưng sai số 10 khi bình phương là 100! Điều này giúp mô hình tập trung vào việc giảm thiểu những lỗi lớn.\n-   **Σ (sigma)**: Ký hiệu này có nghĩa là \"tổng\". Chúng ta sẽ **tổng tất cả các sai số bình phương** của tất cả các điểm dữ liệu mà chúng ta có.\n-   **(1/n)**: Chúng ta chia tổng đó cho **n** (số lượng điểm dữ liệu) để lấy **giá trị trung bình**. Vì vậy mới gọi là \"Mean\" Squared Error.\n\n**Mục tiêu cuối cùng của chúng ta là gì?** Đơn giản thôi: **Tìm các hệ số β (β₀, β₁,...) sao cho giá trị MSE này là nhỏ nhất có thể!** Khi MSE nhỏ nhất, có nghĩa là mô hình của chúng ta đang dự đoán \"gần đúng\" với thực tế nhất có thể. ✨",
+      "quiz": {
+        "question": "Mục tiêu chính khi sử dụng hàm mất mát (Loss Function) trong hồi quy tuyến tính là gì?",
+        "options": [
+          "A. Tăng cường độ phức tạp của mô hình.",
+          "B. Tìm các hệ số β để làm cho hàm mất mát lớn nhất.",
+          "C. Đánh giá độ chính xác của dữ liệu đầu vào.",
+          "D. Tìm các hệ số β để làm cho hàm mất mát nhỏ nhất."
+        ],
+        "correctIdx": 3,
+        "explanation": "Hàm mất mát đo lường mức độ sai lệch của mô hình. Mục tiêu của chúng ta là tìm các tham số (hệ số β) sao cho giá trị của hàm mất mát (ví dụ MSE) đạt mức nhỏ nhất, tức là mô hình dự đoán chính xác nhất."
+      }
+    },
+    {
+      "heading": "Gradient Descent",
+      "content": "Chúng ta đã biết mục tiêu là làm cho MSE nhỏ nhất. Nhưng làm sao để tìm được những giá trị β (hệ số chặn và hệ số hồi quy) giúp đạt được mục tiêu đó? 🤔 Đây chính là lúc **Gradient Descent** (tạm dịch: \"Giảm độ dốc\" hay \"Dốc xuống\") xuất hiện như một \"người hùng\"! 🦸‍♂️\n\nHãy hình dung thế này: Bạn đang đứng trên đỉnh một ngọn núi cao ⛰️, trời rất nhiều sương mù 🌫️, và bạn muốn tìm con đường ngắn nhất để xuống thung lũng (điểm thấp nhất). Bạn không thể nhìn xa, nhưng bạn có thể cảm nhận được độ dốc ngay dưới chân mình.\n\n-   Ngọn núi chính là **Hàm mất mát (Loss Function)** của chúng ta (ví dụ, MSE).\n-   Thung lũng chính là **điểm tối ưu**, nơi Hàm mất mát đạt giá trị nhỏ nhất.\n-   Vị trí của bạn trên núi chính là các **giá trị hiện tại của các hệ số β**.\n\n**Gradient Descent** hoạt động như thế nào?\n1.  **Cảm nhận độ dốc (Gradient)**: Thuật toán sẽ tính toán \"độ dốc\" (hay còn gọi là **gradient**) của Hàm mất mát tại vị trí hiện tại của bạn. Gradient này cho bạn biết hướng nào là dốc nhất để đi lên ⬆️ (nếu muốn tăng hàm mất mát) và hướng nào là dốc nhất để đi xuống ⬇️ (nếu muốn giảm hàm mất mát).\n\n2.  **Đi ngược hướng dốc**: Vì mục tiêu của chúng ta là giảm Hàm mất mát (đi xuống thung lũng), chúng ta sẽ di chuyển các hệ số β của mình một chút theo hướng **ngược lại** với gradient. Nghĩa là, nếu gradient chỉ lên phía Đông, chúng ta sẽ đi xuống phía Tây. 🚶‍♀️\n\n3.  **Bước nhỏ, lặp đi lặp lại**: Chúng ta không nhảy \"một phát\" xuống đáy núi ngay mà sẽ đi từng **bước nhỏ** (được gọi là **learning rate** - tốc độ học) và lặp lại quá trình này. Cứ mỗi bước, chúng ta lại cảm nhận độ dốc mới và điều chỉnh hướng đi.\n\nCứ như vậy, qua rất nhiều lần lặp, chúng ta sẽ dần dần tiến gần đến \"đáy thung lũng\" – nơi mà Hàm mất mát là nhỏ nhất, và đó chính là tập hợp các hệ số β **tối ưu** cho mô hình của chúng ta! 🎉\n\n**Tóm lại:** Gradient Descent là một **thuật toán tối ưu hóa** thông minh giúp chúng ta \"dò đường\" để tìm ra các giá trị tốt nhất cho các hệ số (tham số) của mô hình, sao cho mô hình của chúng ta dự đoán chính xác nhất có thể (tức là làm cho Hàm mất mát nhỏ nhất).",
+      "quiz": {
+        "question": "Trong Gradient Descent, thuật toán cập nhật các tham số của mô hình theo hướng nào?",
+        "options": [
+          "A. Theo hướng của gradient.",
+          "B. Ngược hướng của gradient.",
+          "C. Theo hướng ngẫu nhiên.",
+          "D. Theo hướng vuông góc với gradient."
+        ],
+        "correctIdx": 1,
+        "explanation": "Để tối thiểu hóa hàm mất mát, Gradient Descent di chuyển các tham số theo hướng ngược lại với gradient (độ dốc) của hàm mất mát, tức là đi xuống dốc để tìm điểm thấp nhất."
+      }
+    }
+  ]
+}

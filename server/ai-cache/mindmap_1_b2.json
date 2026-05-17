@@ -1,0 +1,68 @@
+{
+  "chainOfThought": {
+    "summary": "Bài giảng giới thiệu về chuyển đổi số trong doanh nghiệp, bao gồm khái niệm, các trụ cột và các giai đoạn của quá trình chuyển đổi.",
+    "topics": [
+      "1. CĐS doanh nghiệp là gì - gồm khái niệm chuyển đổi số",
+      "2. Các trụ cột của CĐS doanh nghiệp - gồm trải nghiệm khách hàng, quy trình hoạt động, mô hình kinh doanh, văn hóa tổ chức, dữ liệu và phân tích",
+      "3. Các giai đoạn CĐS doanh nghiệp - gồm khởi đầu, thử nghiệm, mở rộng, chuyển đổi, tối ưu"
+    ]
+  },
+  "root": {
+    "label": "Chuyển đổi số trong doanh nghiệp",
+    "children": [
+      {
+        "label": "CĐS doanh nghiệp là gì",
+        "children": [
+          {
+            "label": "Khái niệm chuyển đổi số",
+            "children": [
+              {
+                "label": "Tích hợp công nghệ kỹ thuật số"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Các trụ cột của CĐS doanh nghiệp",
+        "children": [
+          {
+            "label": "Trải nghiệm khách hàng"
+          },
+          {
+            "label": "Quy trình hoạt động"
+          },
+          {
+            "label": "Mô hình kinh doanh"
+          },
+          {
+            "label": "Văn hóa tổ chức"
+          },
+          {
+            "label": "Dữ liệu và phân tích"
+          }
+        ]
+      },
+      {
+        "label": "Các giai đoạn CĐS doanh nghiệp",
+        "children": [
+          {
+            "label": "Khởi đầu"
+          },
+          {
+            "label": "Thử nghiệm"
+          },
+          {
+            "label": "Mở rộng"
+          },
+          {
+            "label": "Chuyển đổi"
+          },
+          {
+            "label": "Tối ưu"
+          }
+        ]
+      }
+    ]
+  }
+}

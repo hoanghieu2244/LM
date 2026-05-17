@@ -1,0 +1,38 @@
+{
+  "title": "Bài 1: Tổng quan về Chuyển đổi số",
+  "sections": [
+    {
+      "heading": "Mục tiêu bài học",
+      "text": "",
+      "list": [
+        "Hiểu rõ khái niệm chuyển đổi số và phân biệt với số hóa và ứng dụng công nghệ thông tin.",
+        "Nhận thức được vai trò và tác động của chuyển đổi số trong các lĩnh vực kinh tế, giáo dục, y tế và quản lý nhà nước.",
+        "Nắm bắt các công nghệ cốt lõi trong chuyển đổi số như AI, IoT, Big Data, Cloud Computing."
+      ]
+    },
+    {
+      "heading": "Chuẩn đầu ra",
+      "text": "",
+      "list": [
+        "Phân biệt được các khái niệm số hóa, tin học hóa và chuyển đổi số.",
+        "Hiểu rõ vai trò của chuyển đổi số trong đời sống xã hội và các lĩnh vực cụ thể.",
+        "Nắm vững các công nghệ cốt lõi và vai trò của chúng trong chuyển đổi số."
+      ]
+    },
+    {
+      "heading": "Nội dung giảng dạy",
+      "text": "",
+      "list": [
+        "Giới thiệu chung về chuyển đổi số và phân biệt với số hóa và ứng dụng công nghệ thông tin.",
+        "Tác động của chuyển đổi số đến chiến lược kinh doanh, trải nghiệm khách hàng, vận hành nội bộ và văn hóa tổ chức.",
+        "Vai trò của chuyển đổi số trong các lĩnh vực kinh tế, giáo dục, y tế và quản lý nhà nước.",
+        "Các giai đoạn và trụ cột chính của chuyển đổi số.",
+        "Khái niệm và đặc điểm của tin học hóa.",
+        "Khái niệm và vai trò của công nghệ số trong chuyển đổi số.",
+        "Lợi ích và thách thức của chuyển đổi số.",
+        "Ví dụ thực tế về chuyển đổi số trong các tổ chức và doanh nghiệp.",
+        "Sơ lược về các công nghệ cốt lõi: AI, IoT, Big Data, Cloud Computing."
+      ]
+    }
+  ]
+}

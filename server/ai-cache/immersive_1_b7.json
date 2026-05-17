@@ -1,0 +1,75 @@
+{
+  "title": "☁️ Khám Phá Điện Toán Đám Mây (Cloud Computing)",
+  "overview": "Điện toán đám mây không chỉ là xu hướng mà còn là tương lai của công nghệ. Bài học này sẽ giúp bạn hiểu rõ về các mô hình dịch vụ và triển khai trong điện toán đám mây, từ đó ứng dụng hiệu quả vào thực tiễn.",
+  "sections": [
+    {
+      "iconLabel": "📌",
+      "heading": "Điện toán đám mây là gì?",
+      "keyInsight": "Điện toán đám mây cung cấp tài nguyên CNTT linh hoạt và hiệu quả qua internet theo yêu cầu.",
+      "content": "Điện toán đám mây là một mô hình cung cấp tài nguyên công nghệ thông tin qua internet, cho phép người dùng truy cập tài nguyên như máy chủ, lưu trữ và ứng dụng một cách linh hoạt mà không cần sở hữu hay quản lý cơ sở hạ tầng vật lý. **Khái niệm này** giúp giảm chi phí, nâng cao hiệu suất, và tăng khả năng mở rộng của hệ thống CNTT. Đặc biệt, điện toán đám mây tạo điều kiện cho các doanh nghiệp tối ưu hóa quy trình làm việc, tăng cường khả năng đổi mới và đáp ứng nhanh chóng với nhu cầu thị trường.",
+      "realWorldExample": "💡 Ví dụ: Công ty Spotify trong ngành âm nhạc đã sử dụng điện toán đám mây để phân phối nội dung âm nhạc đến hàng triệu người dùng một cách ổn định và nhanh chóng.",
+      "checklist": [
+        "Hiểu rõ khái niệm điện toán đám mây",
+        "Xem xét lợi ích của việc sử dụng dịch vụ đám mây",
+        "Đánh giá khả năng áp dụng điện toán đám mây vào doanh nghiệp"
+      ],
+      "quiz": {
+        "question": "Điện toán đám mây cung cấp tài nguyên CNTT như thế nào?",
+        "options": [
+          "Qua internet theo yêu cầu",
+          "Qua mạng nội bộ",
+          "Qua đĩa CD",
+          "Qua USB"
+        ],
+        "correctIdx": 0,
+        "explanation": "Điện toán đám mây cung cấp tài nguyên qua internet theo yêu cầu, giúp người dùng truy cập linh hoạt mà không cần sở hữu cơ sở hạ tầng vật lý."
+      }
+    },
+    {
+      "iconLabel": "🔑",
+      "heading": "Các mô hình dịch vụ",
+      "keyInsight": "IaaS, PaaS và SaaS là ba mô hình dịch vụ chính trong điện toán đám mây, mỗi mô hình đáp ứng các nhu cầu khác nhau của doanh nghiệp.",
+      "content": "Trong điện toán đám mây, có ba mô hình dịch vụ chính được cung cấp:\n\n- **IaaS (Infrastructure as a Service)**: Cung cấp cơ sở hạ tầng cơ bản như máy chủ, mạng, và lưu trữ dưới dạng dịch vụ. Người dùng có thể thuê và quản lý tài nguyên này mà không cần đầu tư vào cơ sở hạ tầng vật lý.\n\n- **PaaS (Platform as a Service)**: Cung cấp nền tảng cho phép các nhà phát triển xây dựng, triển khai và quản lý ứng dụng mà không phải lo lắng về việc quản lý cơ sở hạ tầng bên dưới.\n\n- **SaaS (Software as a Service)**: Cung cấp phần mềm qua internet dưới dạng dịch vụ, cho phép người dùng truy cập và sử dụng phần mềm mà không cần cài đặt.\n\nMỗi mô hình đều có ưu điểm riêng, từ việc giảm chi phí đến tăng cường khả năng phát triển và triển khai ứng dụng một cách nhanh chóng.",
+      "realWorldExample": "💡 Ví dụ: Salesforce, trong ngành quản lý quan hệ khách hàng, sử dụng mô hình SaaS để cung cấp các giải pháp CRM cho doanh nghiệp mà không cần cài đặt phần mềm.",
+      "checklist": [
+        "Phân biệt giữa IaaS, PaaS và SaaS",
+        "Đánh giá nhu cầu của doanh nghiệp để chọn mô hình phù hợp",
+        "Tìm hiểu nhà cung cấp dịch vụ uy tín"
+      ],
+      "quiz": {
+        "question": "Mô hình dịch vụ nào cung cấp nền tảng cho các nhà phát triển?",
+        "options": [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "CaaS"
+        ],
+        "correctIdx": 1,
+        "explanation": "PaaS (Platform as a Service) cung cấp nền tảng cho các nhà phát triển xây dựng và triển khai ứng dụng."
+      }
+    },
+    {
+      "iconLabel": "🌐",
+      "heading": "Các mô hình triển khai",
+      "keyInsight": "Public, Private, Hybrid, và Multi-Cloud là bốn mô hình triển khai đám mây, mỗi mô hình phù hợp với các nhu cầu và yêu cầu bảo mật khác nhau.",
+      "content": "Các mô hình triển khai đám mây bao gồm:\n\n- **Public Cloud**: Cơ sở hạ tầng đám mây được vận hành bởi các nhà cung cấp dịch vụ và phân phối qua internet công cộng, thích hợp cho các dịch vụ công cộng hoặc không cần bảo mật quá cao.\n\n- **Private Cloud**: Được triển khai trong nội bộ tổ chức, cung cấp quyền kiểm soát cao hơn và bảo mật tốt hơn, phù hợp với các doanh nghiệp cần bảo mật thông tin cao.\n\n- **Hybrid Cloud**: Kết hợp giữa Public và Private Cloud, cho phép các doanh nghiệp tận dụng ưu điểm của cả hai mô hình.\n\n- **Multi-Cloud**: Sử dụng nhiều dịch vụ đám mây từ các nhà cung cấp khác nhau để tránh phụ thuộc và tăng tính linh hoạt.\n\nMỗi mô hình triển khai đều mang lại những lợi ích và thách thức riêng, đòi hỏi doanh nghiệp phải cân nhắc kỹ lưỡng dựa trên nhu cầu và chiến lược phát triển của mình.",
+      "realWorldExample": "💡 Ví dụ: Netflix áp dụng mô hình Hybrid Cloud để tận dụng khả năng mở rộng của Public Cloud và bảo mật của Private Cloud cho các dịch vụ phát trực tuyến của mình.",
+      "checklist": [
+        "Xác định yêu cầu bảo mật và kiểm soát của doanh nghiệp",
+        "So sánh các mô hình triển khai để chọn giải pháp phù hợp",
+        "Đánh giá khả năng tích hợp và mở rộng hệ thống"
+      ],
+      "quiz": {
+        "question": "Mô hình triển khai nào kết hợp giữa Public và Private Cloud?",
+        "options": [
+          "Public Cloud",
+          "Private Cloud",
+          "Hybrid Cloud",
+          "Multi-Cloud"
+        ],
+        "correctIdx": 2,
+        "explanation": "Hybrid Cloud kết hợp ưu điểm của cả Public và Private Cloud, cho phép doanh nghiệp linh hoạt trong việc quản lý tài nguyên."
+      }
+    }
+  ]
+}

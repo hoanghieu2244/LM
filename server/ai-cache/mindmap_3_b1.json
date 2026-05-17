@@ -1,0 +1,132 @@
+{
+  "chainOfThought": {
+    "summary": "Bài giảng giới thiệu về lập trình di động, các phương pháp phát triển và so sánh hệ sinh thái Android và iOS.",
+    "topics": [
+      "1. Lập trình di động - gồm khái niệm và nền tảng chính",
+      "2. Phương pháp phát triển - gồm Native, Cross-platform, Hybrid, PWA",
+      "3. Hệ sinh thái Android vs iOS - gồm đặc điểm, thị phần, ngôn ngữ"
+    ]
+  },
+  "root": {
+    "label": "Bài 1: Giới thiệu lập trình cho thiết bị di động",
+    "children": [
+      {
+        "label": "Lập trình di động",
+        "children": [
+          {
+            "label": "Khái niệm",
+            "children": [
+              {
+                "label": "Phát triển ứng dụng cho thiết bị di động"
+              },
+              {
+                "label": "Nền tảng chính: Android, iOS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Phương pháp phát triển",
+        "children": [
+          {
+            "label": "Native",
+            "children": [
+              {
+                "label": "Kotlin/Java cho Android"
+              },
+              {
+                "label": "Swift cho iOS"
+              }
+            ]
+          },
+          {
+            "label": "Cross-platform",
+            "children": [
+              {
+                "label": "Một codebase cho nhiều nền tảng"
+              },
+              {
+                "label": "Công cụ: Flutter, React Native"
+              }
+            ]
+          },
+          {
+            "label": "Hybrid",
+            "children": [
+              {
+                "label": "Web app đóng gói native"
+              },
+              {
+                "label": "Công cụ: Ionic, Cordova"
+              }
+            ]
+          },
+          {
+            "label": "Progressive Web App (PWA)",
+            "children": [
+              {
+                "label": "Website hoạt động như app"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Hệ sinh thái Android vs iOS",
+        "children": [
+          {
+            "label": "Android",
+            "children": [
+              {
+                "label": "Mã nguồn mở"
+              },
+              {
+                "label": "Đa dạng thiết bị"
+              },
+              {
+                "label": "Google Play Store"
+              }
+            ]
+          },
+          {
+            "label": "iOS",
+            "children": [
+              {
+                "label": "Hệ sinh thái khép kín"
+              },
+              {
+                "label": "Hiệu suất cao"
+              },
+              {
+                "label": "App Store"
+              }
+            ]
+          },
+          {
+            "label": "Thị phần",
+            "children": [
+              {
+                "label": "Android ~72%"
+              },
+              {
+                "label": "iOS ~27% toàn cầu"
+              }
+            ]
+          },
+          {
+            "label": "Ngôn ngữ",
+            "children": [
+              {
+                "label": "Kotlin/Java (Android)"
+              },
+              {
+                "label": "Swift/Obj-C (iOS)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

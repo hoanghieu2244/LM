@@ -1,0 +1,104 @@
+{
+  "chainOfThought": {
+    "summary": "Bài giảng giới thiệu về Học máy, bao gồm định nghĩa, các loại học máy, ứng dụng và quy trình thực hiện.",
+    "topics": [
+      "1. Machine Learning là gì - gồm khái niệm về học máy",
+      "2. Các loại Học máy - gồm Supervised, Unsupervised, Reinforcement",
+      "3. Ứng dụng của Machine Learning - gồm nhận dạng giọng nói, hệ thống gợi ý, xe tự hành, phát hiện gian lận, xử lý ngôn ngữ tự nhiên",
+      "4. Quy trình Machine Learning - gồm thu thập dữ liệu, tiền xử lý, chọn mô hình, huấn luyện, đánh giá, triển khai"
+    ]
+  },
+  "root": {
+    "label": "Bài 1: Giới thiệu về Học máy",
+    "children": [
+      {
+        "label": "Machine Learning là gì",
+        "children": [
+          {
+            "label": "Khái niệm về Học máy",
+            "children": [
+              {
+                "label": "Nhánh của AI"
+              },
+              {
+                "label": "Tự động học hỏi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Các loại Học máy",
+        "children": [
+          {
+            "label": "Supervised Learning",
+            "children": [
+              {
+                "label": "Dữ liệu có nhãn"
+              }
+            ]
+          },
+          {
+            "label": "Unsupervised Learning",
+            "children": [
+              {
+                "label": "Cấu trúc ẩn"
+              }
+            ]
+          },
+          {
+            "label": "Reinforcement Learning",
+            "children": [
+              {
+                "label": "Hành động tối ưu"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Ứng dụng của Machine Learning",
+        "children": [
+          {
+            "label": "Nhận dạng giọng nói"
+          },
+          {
+            "label": "Hệ thống gợi ý"
+          },
+          {
+            "label": "Xe tự hành"
+          },
+          {
+            "label": "Phát hiện gian lận"
+          },
+          {
+            "label": "Xử lý ngôn ngữ tự nhiên"
+          }
+        ]
+      },
+      {
+        "label": "Quy trình Machine Learning",
+        "children": [
+          {
+            "label": "Thu thập dữ liệu"
+          },
+          {
+            "label": "Tiền xử lý dữ liệu"
+          },
+          {
+            "label": "Chọn mô hình"
+          },
+          {
+            "label": "Huấn luyện mô hình"
+          },
+          {
+            "label": "Đánh giá mô hình"
+          },
+          {
+            "label": "Triển khai"
+          }
+        ]
+      }
+    ]
+  }
+}

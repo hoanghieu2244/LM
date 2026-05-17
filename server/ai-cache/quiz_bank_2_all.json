@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Theo định nghĩa trong bài giảng, Machine Learning (Học máy) là gì?",
+    "options": [
+      "Một nhánh của Trí tuệ nhân tạo (AI) tập trung vào việc xây dựng các hệ thống có khả năng tự học hỏi và cải thiện từ kinh nghiệm.",
+      "Một phương pháp lập trình rõ ràng cho máy tính để thực hiện các tác vụ phức tạp.",
+      "Một lĩnh vực của thống kê chỉ tập trung vào việc thu thập dữ liệu.",
+      "Một công nghệ chỉ dùng để tạo ra xe tự hành và hệ thống gợi ý."
+    ],
+    "correctIdx": 0,
+    "explanation": "Bài 1 định nghĩa: 'Machine Learning (Học máy) là một nhánh của Trí tuệ nhân tạo (AI), tập trung vào việc xây dựng các hệ thống có khả năng tự động học hỏi và cải thiện từ kinh nghiệm mà không cần được lập trình một cách rõ ràng.'"
+  },
+  {
+    "id": 2,
+    "type": "true_false",
+    "difficulty": "medium",
+    "question": "Học tăng cường (Reinforcement Learning) là một dạng của Học có giám sát (Supervised Learning).",
+    "answer": false,
+    "explanation": "Bài 1 liệt kê các loại Học máy riêng biệt: 'Supervised Learning (Học có giám sát)..., Unsupervised Learning (Học không giám sát)..., Reinforcement Learning (Học tăng cường)...'. Do đó, Học tăng cường là một loại riêng, không phải là dạng của Học có giám sát."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Đâu là thứ tự ĐÚNG của 3 bước đầu tiên trong quy trình Machine Learning được nêu trong bài giảng?",
+    "options": [
+      "Chọn mô hình, Huấn luyện mô hình, Đánh giá mô hình",
+      "Tiền xử lý dữ liệu, Thu thập dữ liệu, Chọn mô hình",
+      "Thu thập dữ liệu, Tiền xử lý dữ liệu, Chọn mô hình",
+      "Thu thập dữ liệu, Huấn luyện mô hình, Triển khai"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 1 liệt kê quy trình Machine Learning: '1. Thu thập dữ liệu (Data Collection), 2. Tiền xử lý dữ liệu (Data Preprocessing), 3. Chọn mô hình (Model Selection)...'"
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Trong công thức của Hồi quy tuyến tính (y = β₀ + β₁x₁ + ... + ε), ký hiệu β₀ đại diện cho điều gì?",
+    "options": [
+      "Biến phụ thuộc",
+      "Hệ số hồi quy",
+      "Hệ số chặn",
+      "Sai số"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 2 giải thích công thức: 'β₀: hệ số chặn (intercept)'."
+  },
+  {
+    "id": 5,
+    "type": "true_false",
+    "difficulty": "medium",
+    "question": "Mục tiêu của Hồi quy tuyến tính là tìm các hệ số β sao cho hàm mất mát Mean Squared Error (MSE) đạt giá trị lớn nhất.",
+    "answer": false,
+    "explanation": "Bài 2 nêu rõ mục tiêu: 'Tìm các hệ số β sao cho MSE nhỏ nhất.'"
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Thuật toán Gradient Descent được sử dụng trong Hồi quy tuyến tính để làm gì?",
+    "options": [
+      "Để tính giá trị của biến phụ thuộc y.",
+      "Để tìm giá trị tối ưu của hàm mất mát bằng cách cập nhật tham số.",
+      "Để chuẩn hóa các biến độc lập x.",
+      "Để tính toán sai số ε của mô hình."
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 2 mô tả về Gradient Descent: 'Gradient Descent là thuật toán tối ưu hóa dùng để tìm giá trị tối ưu của hàm mất mát bằng cách cập nhật tham số theo hướng ngược gradient.'"
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Mô hình Logistic Regression sử dụng hàm nào để ước lượng xác suất một mẫu thuộc về lớp dương?",
+    "options": [
+      "Hàm ReLU",
+      "Hàm Tanh",
+      "Hàm Sigmoid",
+      "Hàm Softmax"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 3 nêu rõ: 'Logistic Regression sử dụng hàm sigmoid σ(z) = 1/(1+e⁻ᶻ) để ước lượng xác suất thuộc lớp dương.'"
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Trong đánh giá mô hình phân loại, F1-Score được định nghĩa là gì?",
+    "options": [
+      "Tỷ lệ dự đoán đúng trên tổng số mẫu.",
+      "Tỷ lệ các mẫu dương thực sự được dự đoán đúng.",
+      "Trung bình cộng của Precision và Recall.",
+      "Trung bình điều hòa của Precision và Recall."
+    ],
+    "correctIdx": 3,
+    "explanation": "Bài 3 định nghĩa F1-Score: 'F1-Score: Trung bình điều hòa của Precision và Recall'."
+  },
+  {
+    "id": 9,
+    "type": "true_false",
+    "difficulty": "easy",
+    "question": "Bài toán phân loại, ví dụ như phân loại email spam, thuộc loại Học không giám sát (Unsupervised Learning).",
+    "answer": false,
+    "explanation": "Bài 3 khẳng định: 'Phân loại là bài toán Supervised Learning, dự đoán nhãn rời rạc cho dữ liệu đầu vào. Ví dụ: phân loại email spam/không spam...'"
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Đâu KHÔNG phải là một tiêu chí chia nhánh của Cây quyết định được liệt kê trong bài giảng?",
+    "options": [
+      "Information Gain",
+      "Gini Impurity",
+      "Entropy",
+      "Mean Squared Error (MSE)"
+    ],
+    "correctIdx": 3,
+    "explanation": "Bài 4 liệt kê các tiêu chí chia nhánh là 'Entropy', 'Information Gain', và 'Gini Impurity'. MSE là hàm mất mát của Hồi quy tuyến tính (Bài 2)."
+  },
+  {
+    "id": 11,
+    "type": "true_false",
+    "difficulty": "medium",
+    "question": "Một trong những ưu điểm của Cây quyết định là chúng không bị ảnh hưởng bởi hiện tượng overfitting.",
+    "answer": false,
+    "explanation": "Bài 4 nêu rõ nhược điểm: 'Nhược: Dễ overfitting nếu cây quá sâu'."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Phương pháp Random Forest được sử dụng với mục đích chính là gì?",
+    "options": [
+      "Để tăng tốc độ huấn luyện một cây quyết định duy nhất.",
+      "Để giảm overfitting bằng cách kết hợp nhiều cây quyết định.",
+      "Để xử lý dữ liệu không có nhãn.",
+      "Để xây dựng các cây quyết định một cách tuần tự."
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 4 mô tả về Ensemble Methods: 'Random Forest: Kết hợp nhiều cây quyết định, giảm overfitting'."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Trong thuật toán SVM, các điểm dữ liệu gần nhất với siêu phẳng phân tách và quyết định vị trí của nó được gọi là gì?",
+    "options": [
+      "Margin Points",
+      "Support Vectors",
+      "Kernel Points",
+      "Hyperplane Vectors"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 5 định nghĩa: 'Support Vectors: Các điểm gần nhất với hyperplane, quyết định vị trí'."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Kỹ thuật 'Kernel Trick' trong SVM có tác dụng gì?",
+    "options": [
+      "Giảm số chiều của dữ liệu để tính toán nhanh hơn.",
+      "Ánh xạ dữ liệu lên không gian cao hơn để dễ phân tách.",
+      "Tìm khoảng cách lề (margin) lớn nhất.",
+      "Chọn ra các vector hỗ trợ (support vectors)."
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 5 giải thích: 'Kernel Trick: Ánh xạ dữ liệu lên không gian cao hơn'."
+  },
+  {
+    "id": 15,
+    "type": "true_false",
+    "difficulty": "easy",
+    "question": "Trong cấu trúc của Mạng nơ-ron, lớp ẩn (Hidden Layers) là nơi đưa ra kết quả dự đoán cuối cùng.",
+    "answer": false,
+    "explanation": "Bài 6 mô tả cấu trúc mạng: 'Output Layer: Đưa ra kết quả dự đoán'. Lớp ẩn chỉ 'xử lý thông tin'."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Hàm kích hoạt nào được mô tả là 'phổ biến nhất' và có công thức f(x) = max(0,x)?",
+    "options": [
+      "Sigmoid",
+      "Tanh",
+      "Softmax",
+      "ReLU"
+    ],
+    "correctIdx": 3,
+    "explanation": "Bài 6 mô tả các hàm kích hoạt: 'ReLU: f(x) = max(0,x) — phổ biến nhất'."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Kỹ thuật Lan truyền ngược (Backpropagation) trong Mạng nơ-ron có vai trò chính là gì?",
+    "options": [
+      "Lan truyền tín hiệu từ lớp đầu vào đến lớp đầu ra để đưa ra dự đoán.",
+      "Khởi tạo ngẫu nhiên các trọng số và biases của mạng.",
+      "Tính gradient của hàm mất mát theo từng trọng số bằng quy tắc chuỗi (chain rule).",
+      "Chuẩn hóa đầu vào của mỗi lớp để tăng tốc độ hội tụ."
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 6 định nghĩa: 'Backpropagation: Lan truyền ngược (Backpropagation) tính gradient của loss theo từng trọng số bằng chain rule, sau đó cập nhật trọng số theo hướng giảm loss.'"
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Theo bài giảng, một trong những lý do khiến Deep Learning hiệu quả là gì?",
+    "options": [
+      "Luôn yêu cầu dữ liệu được gán nhãn thủ công.",
+      "Chỉ hoạt động tốt với lượng dữ liệu nhỏ.",
+      "Tự động trích xuất đặc trưng từ dữ liệu thô.",
+      "Không cần sử dụng GPU để tăng tốc tính toán."
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 7 liệt kê lý do Deep Learning hiệu quả: 'Tự động trích xuất đặc trưng từ dữ liệu thô'."
+  },
+  {
+    "id": 19,
+    "type": "true_false",
+    "difficulty": "medium",
+    "question": "Keras là một framework Deep Learning cấp thấp, độc lập và cạnh tranh với TensorFlow.",
+    "answer": false,
+    "explanation": "Bài 7 mô tả: 'Keras: API cấp cao, dễ sử dụng, chạy trên TensorFlow'. Điều này cho thấy Keras không độc lập và là API cấp cao, không phải cấp thấp."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Kỹ thuật huấn luyện 'Dropout' được sử dụng để làm gì?",
+    "options": [
+      "Tăng cường dữ liệu huấn luyện bằng cách tạo thêm mẫu.",
+      "Điều chỉnh tốc độ học trong quá trình huấn luyện.",
+      "Tắt ngẫu nhiên các neuron để giảm overfitting.",
+      "Chuẩn hóa đầu vào của mỗi lớp trong mạng."
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 7 liệt kê các kỹ thuật huấn luyện: 'Dropout: Tắt ngẫu nhiên neuron để giảm overfitting'."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Trong Mạng nơ-ron tích chập (CNN), lớp nào chịu trách nhiệm giảm kích thước và giữ lại thông tin quan trọng?",
+    "options": [
+      "Convolutional Layer",
+      "Pooling Layer",
+      "Fully Connected Layer",
+      "Flatten Layer"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 8 mô tả các lớp trong CNN: 'Pooling Layer: Giảm kích thước, giữ thông tin quan trọng (Max, Average)'."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Kiến trúc CNN nào nổi tiếng với việc sử dụng 'Residual connections' để huấn luyện các mạng rất sâu lên tới hàng trăm lớp?",
+    "options": [
+      "LeNet-5",
+      "AlexNet",
+      "VGGNet",
+      "ResNet"
+    ],
+    "correctIdx": 3,
+    "explanation": "Bài 8 mô tả các kiến trúc nổi tiếng: 'ResNet: Residual connections, hàng trăm lớp'."
+  },
+  {
+    "id": 23,
+    "type": "true_false",
+    "difficulty": "medium",
+    "question": "Mạng nơ-ron hồi quy (RNN) xử lý dữ liệu tuần tự bằng cách truyền trạng thái ẩn từ bước trước sang bước sau.",
+    "answer": true,
+    "explanation": "Bài 9 định nghĩa: 'Recurrent Neural Network (RNN) là mạng nơ-ron có bộ nhớ, xử lý dữ liệu tuần tự bằng cách truyền trạng thái ẩn (hidden state) từ bước trước sang bước sau.'"
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Biến thể nào của RNN được tạo ra để giải quyết vấn đề 'vanishing gradient' bằng cách sử dụng 'cell state'?",
+    "options": [
+      "GRU (Gated Recurrent Unit)",
+      "Bidirectional RNN",
+      "LSTM (Long Short-Term Memory)",
+      "Attention Mechanism"
+    ],
+    "correctIdx": 2,
+    "explanation": "Bài 9 mô tả các biến thể RNN: 'LSTM (Long Short-Term Memory): Giải quyết vanishing gradient với cell state'."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Trong Xử lý ngôn ngữ tự nhiên (NLP), quá trình tách văn bản thành các đơn vị nhỏ hơn (như từ) được gọi là gì?",
+    "options": [
+      "Word Embedding",
+      "Tokenization",
+      "Attention",
+      "Backpropagation"
+    ],
+    "correctIdx": 1,
+    "explanation": "Bài 9 giải thích các khái niệm NLP: 'Tokenization: Tách văn bản thành token'."
+  }
+]

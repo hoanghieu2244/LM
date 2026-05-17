@@ -1,0 +1,126 @@
+{
+  "chainOfThought": {
+    "summary": "Bài giảng giới thiệu về xử lý ảnh số, bao gồm khái niệm cơ bản, cách biểu diễn ảnh và thư viện OpenCV.",
+    "topics": [
+      "1. Xử lý ảnh số - gồm khái niệm và ứng dụng",
+      "2. Biểu diễn ảnh số - gồm pixel, ảnh xám, ảnh màu, độ phân giải, bit depth",
+      "3. Thư viện OpenCV - gồm hỗ trợ ngôn ngữ và thuật toán"
+    ]
+  },
+  "root": {
+    "label": "Bài 1: Giới thiệu về Xử lý ảnh số",
+    "children": [
+      {
+        "label": "Xử lý ảnh số",
+        "children": [
+          {
+            "label": "Khái niệm",
+            "children": [
+              {
+                "label": "Thuật toán máy tính"
+              },
+              {
+                "label": "Phân tích và hiểu ảnh số"
+              }
+            ]
+          },
+          {
+            "label": "Ứng dụng",
+            "children": [
+              {
+                "label": "Y tế"
+              },
+              {
+                "label": "An ninh"
+              },
+              {
+                "label": "Viễn thám"
+              },
+              {
+                "label": "Tự động hóa"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Biểu diễn ảnh số",
+        "children": [
+          {
+            "label": "Pixel",
+            "children": [
+              {
+                "label": "Phần tử nhỏ nhất của ảnh"
+              }
+            ]
+          },
+          {
+            "label": "Ảnh xám",
+            "children": [
+              {
+                "label": "Giá trị 0-255"
+              }
+            ]
+          },
+          {
+            "label": "Ảnh màu",
+            "children": [
+              {
+                "label": "Kênh Red, Green, Blue"
+              }
+            ]
+          },
+          {
+            "label": "Độ phân giải",
+            "children": [
+              {
+                "label": "Số pixel (width × height)"
+              }
+            ]
+          },
+          {
+            "label": "Bit depth",
+            "children": [
+              {
+                "label": "Số bit biểu diễn mỗi pixel"
+              },
+              {
+                "label": "8-bit, 16-bit"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Thư viện OpenCV",
+        "children": [
+          {
+            "label": "Hỗ trợ ngôn ngữ",
+            "children": [
+              {
+                "label": "Python"
+              },
+              {
+                "label": "C++"
+              },
+              {
+                "label": "Java"
+              }
+            ]
+          },
+          {
+            "label": "Thuật toán",
+            "children": [
+              {
+                "label": "Xử lý ảnh"
+              },
+              {
+                "label": "Thị giác máy tính"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
